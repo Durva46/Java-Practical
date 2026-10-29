@@ -1,0 +1,3 @@
+import java.util.*;
+class Counter { int count; void increment(){count++;} synchronized void safeIncrement(){count++;} }
+public class Main { public static void main(String[] args)throws Exception{Scanner sc=new Scanner(System.in);System.out.print("Threads: ");int n=sc.nextInt();System.out.print("Increments per thread: ");int reps=sc.nextInt();System.out.print("Use synchronization (yes/no): ");boolean safe=sc.next().equalsIgnoreCase("yes");Counter c=new Counter();Thread[] ts=new Thread[n];for(int i=0;i<n;i++)ts[i]=new Thread(()->{for(int j=0;j<reps;j++)if(safe)c.safeIncrement();else c.increment();});for(Thread t:ts)t.start();for(Thread t:ts)t.join();System.out.println("Expected: "+(n*reps)+", Actual: "+c.count);sc.close();} }

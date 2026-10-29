@@ -1,0 +1,2 @@
+import java.util.*;
+public class Main {public static void main(String[] args){Map<String,Integer> scores=new HashMap<>();scores.put("Aarav",92);scores.put("Diya",98);scores.put("Meera",92);scores.put("Rohan",85);List<Map.Entry<String,Integer>> ranking=new ArrayList<>(scores.entrySet());ranking.sort(Map.Entry.<String,Integer>comparingByValue().reversed().thenComparing(Map.Entry::getKey));System.out.println("Top 3 players:");for(int i=0;i<Math.min(3,ranking.size());i++)System.out.println(ranking.get(i).getKey()+" - "+ranking.get(i).getValue());}}

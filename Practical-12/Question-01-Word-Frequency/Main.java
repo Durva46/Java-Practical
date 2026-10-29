@@ -1,0 +1,2 @@
+import java.util.*;
+public class Main {public static void main(String[] args){String paragraph="Java is simple and Java is powerful and useful";Map<String,Integer> f=new HashMap<>();for(String w:paragraph.toLowerCase().split("\\W+"))if(!w.isEmpty())f.put(w,f.getOrDefault(w,0)+1);List<Map.Entry<String,Integer>> words=new ArrayList<>(f.entrySet());words.sort(Map.Entry.<String,Integer>comparingByValue().reversed().thenComparing(Map.Entry::getKey));for(var e:words)System.out.println(e.getKey()+" : "+e.getValue());}}

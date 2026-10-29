@@ -1,0 +1,2 @@
+import java.util.*;
+public class Main {public static void main(String[] args){List<String> logins=Arrays.asList("durva","aarav","diya","durva","rohan","aarav","meera");Set<String> unique=new HashSet<>(logins);LinkedHashSet<String> ordered=new LinkedHashSet<>(logins);System.out.println("Unique visitor count: "+unique.size());System.out.println("First three distinct visitors:");int count=0;for(String name:ordered){if(count++==3)break;System.out.println(name);}}}

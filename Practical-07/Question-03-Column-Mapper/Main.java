@@ -1,0 +1,4 @@
+import java.lang.annotation.*;import java.lang.reflect.*;
+@Retention(RetentionPolicy.RUNTIME) @Target(ElementType.FIELD) @interface Column { String value(); }
+class Student { @Column("student_name") String name; @Column("age") int age; public String toString(){return name+" ("+age+")";} }
+public class Main { static Student map(String[] headers,String[] values)throws Exception{Student s=new Student();for(Field f:Student.class.getDeclaredFields()){Column c=f.getAnnotation(Column.class);for(int i=0;i<headers.length;i++)if(c.value().equals(headers[i])){f.setAccessible(true);if(f.getType()==int.class)f.setInt(s,Integer.parseInt(values[i]));else f.set(s,values[i]);}}return s;}public static void main(String[] args)throws Exception{System.out.println(map(new String[]{"student_name","age"},new String[]{"Durva","20"}));} }

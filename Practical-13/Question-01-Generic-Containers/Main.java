@@ -1,0 +1,3 @@
+class Box<T>{private T value;void set(T v){value=v;}T get(){return value;}}
+class Pair<A,B>{private final A first;private final B second;Pair(A a,B b){first=a;second=b;}A getFirst(){return first;}B getSecond(){return second;}}
+public class Main {static <T>T firstElement(T[] a){if(a.length==0)throw new IllegalArgumentException("Array is empty");return a[0];}public static void main(String[] args){Box<Integer> i=new Box<>();i.set(100);Box<String>s=new Box<>();s.set("Hello");Pair<String,Integer> p=new Pair<>("Om",21);String[] names={"Om","Rahul","Amit"};Integer[] nums={10,20,30};System.out.println(i.get());System.out.println(s.get());System.out.println(p.getFirst()+" "+p.getSecond());System.out.println(firstElement(names));System.out.println(firstElement(nums));}}
